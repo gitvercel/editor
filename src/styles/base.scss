@@ -1,0 +1,40 @@
+$c-white: #FFF;
+$c-light: #E7E7E7;
+$c-accent: #c4cdca;
+$c-medium: gray;
+$c-background: #e2e2e2;
+$c-active: rgb(141, 174, 207);
+
+
+%panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 300px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 100vh;
+  color: $c-white;
+  overflow: hidden;
+  font-weight: 500;
+  // TODO: RWD - close panel on pad view
+  .icon.expand {
+    display: none;
+  }
+
+  &.close {
+    width: 2px;
+
+    .icon.expand {
+      display: flex;
+    }
+  }
+
+}
+
+@mixin editorBackground {
+  background: repeating-linear-gradient(45deg, #414368 0, #414368 0.8px, #667275 0, #959595 5px),#667275;
+  box-shadow: inset -25px 25px 50px #50595b,
+    inset 25px -25px 80px #51595b99;
+}

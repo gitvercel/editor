@@ -1,0 +1,234 @@
+@import './base.scss';
+.activeItem {
+  border: 2px solid $c-active;
+}
+
+.active {
+  color: $c-active;
+  opacity: 1;
+}
+
+.inactive {
+  opacity: 0.6;
+}
+
+.mutedText {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.panelHead {
+  @include editorBackground;
+  display: flex;
+  justify-content: space-between;
+  height: 2.375rem;
+  padding: 0.5rem 1rem;
+  background-color: $c-light;
+  border-bottom: 1px solid $c-medium;
+}
+
+.panelHeadTitle {
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    margin-left: .5rem;
+  }
+}
+
+.panelHeadBtn {
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    margin-inline-start: .5rem;
+    color: $c-active;
+  }
+}
+
+.panelBody {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.panelLeft {
+  @extend %panel;
+  @include editorBackground;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top-right-radius: 20px;
+  border-inline-end: 1px solid $c-medium;
+  z-index: 1;
+
+  .panelBody {
+    max-height: subtract(50vh, 2.375rem);
+    overflow-y: scroll;
+    align-items: flex-start;
+    input[type="text"]{
+      width: 120px;
+      padding: 0.2rem 1rem;
+    }
+    ul {
+      text-indent: 1em;
+      margin-inline-start: 1.6em;
+    }
+  }
+
+  .pageThumbnailWrapper {
+    display: flex;
+    width: 205px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0.5rem;
+    height: 36px;
+    box-sizing: content-box;
+    margin-bottom: 0.5rem;
+    margin-inline: -0.5rem;
+
+    >p {
+      display: inline-block;
+      vertical-align: middle;
+      width: 2rem;
+    }
+    >div {
+      display:contents;
+    }
+    >div>span {
+      display: inline-flex;
+      vertical-align: middle;
+    }
+
+    .mutedText{
+      display: none;
+    }
+  }
+  .pageImage, .emptyImage {
+    width: 30px;
+    height: 15px;
+    border: 1px solid $c-accent;
+    background-color: $c-white;
+  }
+
+  .emptyImage {
+    background-color: $c-white;
+    margin-inline-start: .5rem;
+  }
+}
+
+.panelRight {
+  @extend %panel;
+  @include editorBackground;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius: 20px;
+  z-index: 1;
+
+  button {
+    display: flex;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin-top: 0.8rem;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    background-color: #496868;
+    box-shadow: 5px 5px 0 0 #d4d4b3c4;
+    appearance: none;
+    outline: none;
+    border: none;
+    color: $c-white;
+    opacity: 0.8;
+    transform: translate(-5px, -5px);
+    transition: all 0.2s linear;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 0 #d4d4b3c4;
+      transform: translate(0, 0);
+    }
+  }
+  
+  input[type="number"] {
+    max-width: 3rem;
+    margin-inline-end: .6rem;
+    background-color: $c-background;
+  }
+
+  input[type="color"] {
+    appearance: none;
+    outline: none;
+    padding: 0;
+    border: none;
+    width: 80px;
+    background: transparent;
+  }
+}
+
+.panelBodyInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: .6rem;
+}
+
+.panelBodyInputFormGroupRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: .6rem;
+
+  .panelBodyInputTitle {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.panelBodyInputFlexColumn {
+  @extend .panelBodyInput !optional;
+  flex-direction: column;
+
+  .panelBodyInputContent {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+  }
+}
+
+.panelBodyInputTitle {
+  text-transform: uppercase;
+  opacity: 0.9;
+  vertical-align: middle;
+  margin-inline-end: 1rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  padding: 1rem;
+  .panelBody{
+    flex-grow: 0;
+  }
+
+}
+
+.editingArea {
+  background-color: rgba($c-white, 0.8);
+  border: 1px solid $c-medium;
+  box-sizing: content-box;
+}
